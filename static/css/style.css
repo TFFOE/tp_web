@@ -1,0 +1,66 @@
+ul.navbar-nav {
+    margin-right: 50px;
+}
+
+nav {
+    height: 80px;
+}
+
+button.button-ask {
+    display: inline-block;
+    height: calc(1.5em + .75rem + 2px);
+    width: 70px;
+    background-color: limegreen;
+    color:white;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.userblock > .for-unlogged-user { display: inline; }
+.userblock > .for-logged-user { display: none; }
+
+.userblock.logged-user > .for-unlogged-user { display: none; }
+.userblock.logged-user > .for-logged-user { display: inline; }
+
+.userblock {
+    position: relative;
+    right: 10px;
+}
+
+.userblock > table {
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.userblock > table td {
+    padding: 0px 5px;
+}
+
+.userblock > table img {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 50px;
+}
+
+.userblock  .user-name {
+    color: white;
+}
+
+.userblock a {
+    font-size: 90%;
+    color: lightgray;
+}
+
+.userblock a:visited {
+    color: gray;
+}
+
+.col-9 {
+    background-color: red;
+}
+
+.col-5 {
+    background-color: green;
+}
