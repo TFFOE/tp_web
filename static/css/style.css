@@ -53,7 +53,7 @@ button.button-ask {
 }
 
 .userblock  .user-name {
-    color: white;
+    color: #008585;
 }
 
 .userblock a {
@@ -66,22 +66,22 @@ button.button-ask {
 }
 
 .pop-tag-1 {
-
+    color: #008585;
 }
 
 .pop-tag-2 {
     font-size: 130%;
-    color: magenta;
+    color: #007400;
 }
 
 .pop-tag-3 {
     font-size: 160%;
-    color: green;
+    color: #de6500;
 }
 
 .pop-tag-4 {
     font-size: 190%;
-    color: red;
+    color: #de0000;
 }
 
 .popular-tags > a {
@@ -93,7 +93,7 @@ button.button-ask {
 
 .popular-tags > a:hover {
     text-decoration: none;
-    color: lime;
+    color: #00b200;
     transition: 0.1s;
 }
 
@@ -118,12 +118,19 @@ body {
     padding-left: 0;
 }
 
-.best-members > ul > li {
+.best-members > ul > li{
     margin: 10px 0;
 }
 
-.best-members > ul > li:hover {
+.best-members > ul > li a {
+    color: #008585;
+    transition: 0.3s;
+}
+
+.best-members > ul > li a:hover {
     text-decoration: none;
+    color: #00b200;
+    transition: 0.1s;
 }
 
 .question-card {
@@ -276,4 +283,39 @@ body {
 .questions-footer .page-ref:hover {
     background-color: rgba(0, 0, 0, 0.2);
     text-decoration: none;
+}
+
+.question-ask table {
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+}
+
+.question-ask table tbody {
+    vertical-align: top;
+}
+
+.question-ask table td {
+    margin: 10px;
+}
+
+.question-ask .label {
+    width: 100%;
+    font-size: 110%;
+}
+
+.question-ask input[type="text"] {
+    width: 100%;
+    padding-left: 5px;
+}
+
+.question-ask textarea{
+    width: 100%;
+    padding-left: 5px;
+}
+
+.question-ask input[type="submit"] {
+    background-color: limegreen;
+    color:white;
+    border-radius: 5px;
 }
