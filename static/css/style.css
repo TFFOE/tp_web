@@ -57,14 +57,6 @@ button.button-ask {
     color: gray;
 }
 
-.col-9 {
-    background-color: red;
-}
-
-.col-5 {
-    background-color: green;
-}
-
 .pop-tag-1 {
 
 }
@@ -87,14 +79,14 @@ button.button-ask {
 .popular-tags > a {
     display: inline-block;
     margin-right: 20px;
-    transition: 0.1s;
+    transition: 0.3s;
     text-align: center;
 }
 
 .popular-tags > a:hover {
     text-decoration: none;
     color: lime;
-    transition: 0.3s;
+    transition: 0.1s;
 }
 
 .right-block {
@@ -110,6 +102,7 @@ body {
     background-color: white;
     opacity: 0.95;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 20px;
 }
 
 .best-members > ul {
@@ -124,3 +117,114 @@ body {
 .best-members > ul > li:hover {
     text-decoration: none;
 }
+
+.question-card {
+    position: relative;
+    border: 1px solid black;
+    height: 150px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.question-card .question-title {
+    height: 10%;
+    position: absolute;
+}
+
+.question-card .question-text {
+    overflow: hidden;
+    position: absolute;
+    height: 30%;
+    top: 50px;
+}
+
+.question-card .question-footer {
+    position: absolute;
+    height: 20%;
+    bottom: 0
+}
+
+.question-card > div {
+    padding: 10px 0;
+    text-align: initial;
+}
+
+.question-card .avatar-box {
+    max-height: 60px;
+    text-align: center;
+}
+
+.question-card .avatar-box img {
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.question-card .like-counter{
+    margin-top: 20px;
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.1);
+}
+
+.question-card .like-button {
+    display: inline-block;
+    background-image: url(../img/like-dec.png);
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    transform: scale(1, -1);
+}
+
+.question-card .dislike-button {
+    display: inline-block;
+    background-image: url(../img/like-dec.png);
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+}
+
+.question-card .col1 {
+    position: relative;
+    width: 70px;
+    display: inline-block;
+}
+
+.question-card .col2 {
+    vertical-align: top;
+    width: calc(100% - 90px);
+    display: inline-block;
+    padding: 10px;
+}
+
+.question-footer {
+    position: relative;
+    width: calc(100% - 70px - 30px);
+}
+
+.question-tag {
+    padding: 0 5px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10%;
+}
+.question-tag:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.question-answer {
+    float: left;
+}
+
+.question-tags {
+    float: right;
+}
+
+.answer-count:before {
+    content:"(";
+}
+.answer-count:after {
+    content:")";
+}
+
