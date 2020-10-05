@@ -64,3 +64,63 @@ button.button-ask {
 .col-5 {
     background-color: green;
 }
+
+.pop-tag-1 {
+
+}
+
+.pop-tag-2 {
+    font-size: 130%;
+    color: magenta;
+}
+
+.pop-tag-3 {
+    font-size: 160%;
+    color: green;
+}
+
+.pop-tag-4 {
+    font-size: 190%;
+    color: red;
+}
+
+.popular-tags > a {
+    display: inline-block;
+    margin-right: 20px;
+    transition: 0.1s;
+    text-align: center;
+}
+
+.popular-tags > a:hover {
+    text-decoration: none;
+    color: lime;
+    transition: 0.3s;
+}
+
+.right-block {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+body {
+    background-image: url(../img/background.jpg);
+}
+
+.container {
+    background-color: white;
+    opacity: 0.95;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.best-members > ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.best-members > ul > li {
+    margin: 10px 0;
+}
+
+.best-members > ul > li:hover {
+    text-decoration: none;
+}
