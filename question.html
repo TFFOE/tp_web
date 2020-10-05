@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <div id="body-mask"> </div>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="#">AskMe</a>
 
@@ -28,7 +29,7 @@
             <table class="for-logged-user">
                 <tr>
                     <td rowspan=3>
-                        <img src="static/img/user-avatar.png" alt="user-avatar"/>
+                        <img src="static/img/user-avatar.png" alt="user-avatar" />
                     </td>
                     <td colspan=2>
                         <div class="user-name">Dr. Pepper</div>
@@ -56,38 +57,57 @@
     <main role="main">
         <div class="container">
             <div class="row">
-            <div class="col-md-8">
-                <div class="questions-header">
-                    <h1>
-                        New Question
-                    </h1>
+                <div class="col-md-8">
+                    <div class="questions-header">
+                        <h1>
+                            New Question
+                        </h1>
+                        <form action="">
+                            <table>
+                                <tr>
+                                    <div class="label">Title</div>
+                                    <input type="text" name="title" id="">
+                                </tr>
+                                <tr>
+                                    <div class="label">Text</div>
+                                    <input type="text" name="text" id="">
+                                </tr>
+                                <tr>
+                                    <div class="label">Tags</div>
+                                    <input type="text" name="tags" id="">
+                                </tr>
+                                <tr>
+                                    <input type="submit" value="Ask">
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="right-block popular-tags">
+                        <h1>Popular tags</h1>
+                        <a href="" class="pop-tag-1">perl</a>
+                        <a href="" class="pop-tag-4">Python</a>
+                        <a href="" class="pop-tag-1">Technopark</a>
+                        <a href="" class="pop-tag-4">sunlight</a>
+                        <a href="" class="pop-tag-3">oh_my_zsh</a>
+                        <a href="" class="pop-tag-1">Hello world!</a>
+                        <a href="" class="pop-tag-1">Black shower</a>
+                        <a href="" class="pop-tag-2">Firefox</a>
+                    </div>
+                    <div class="right-block best-members">
+                        <h1>Best members</h1>
+                        <ul>
+                            <li><a href="">Jack Sparrow</a></li>
+                            <li><a href="">Colin Peckers</a></li>
+                            <li><a href="">Julie Balabone</a></li>
+                            <li><a href="">Mark Down</a></li>
+                            <li><a href="">Sweden Orange</a></li>
+                            <li><a href="">Malacata Chichiburi</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4">
-                <div class="right-block popular-tags">
-                    <h1>Popular tags</h1>  
-                    <a href="" class="pop-tag-1">perl</a>
-                    <a href="" class="pop-tag-4">Python</a>
-                    <a href="" class="pop-tag-1">Technopark</a>
-                    <a href="" class="pop-tag-4">sunlight</a>
-                    <a href="" class="pop-tag-3">oh_my_zsh</a>
-                    <a href="" class="pop-tag-1">Hello world!</a>
-                    <a href="" class="pop-tag-1">Black shower</a>
-                    <a href="" class="pop-tag-2">Firefox</a>
-                </div>
-                <div class="right-block best-members">
-                    <h1>Best members</h1>
-                    <ul>
-                        <li><a href="">Jack Sparrow</a></li>
-                        <li><a href="">Colin Peckers</a></li>
-                        <li><a href="">Julie Balabone</a></li>
-                        <li><a href="">Mark Down</a></li>
-                        <li><a href="">Sweden Orange</a></li>
-                        <li><a href="">Malacata Chichiburi</a></li>
-                    </ul>
-                </div>
-            </div>
-            </div>  
         </div>
     </main>
     <!-- Optional JavaScript -->
