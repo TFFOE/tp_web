@@ -120,11 +120,12 @@ body {
 
 .question-card {
     position: relative;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     height: 150px;
     margin-top: 20px;
     margin-bottom: 30px;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .question-card .question-title {
@@ -137,6 +138,7 @@ body {
     position: absolute;
     height: 30%;
     top: 50px;
+    padding-right: 20px;
 }
 
 .question-card .question-footer {
@@ -164,7 +166,17 @@ body {
 .question-card .like-counter{
     margin-top: 20px;
     text-align: center;
+}
+
+.question-card .like-counter .info {
+    margin-bottom: 5px;
+}
+
+.question-card .like-counter .info > span {
+    display: inline-block;
     background-color:rgba(0, 0, 0, 0.1);
+    width: 25px;
+    border-radius: 50%;
 }
 
 .question-card .like-button {
@@ -192,7 +204,7 @@ body {
 
 .question-card .col2 {
     vertical-align: top;
-    width: calc(100% - 90px);
+    width: calc(100% - 80px);
     display: inline-block;
     padding: 10px;
 }
@@ -207,6 +219,7 @@ body {
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10%;
+    margin-right: 3px;
 }
 .question-tag:hover {
     background-color: rgba(0, 0, 0, 0.2);
@@ -228,3 +241,31 @@ body {
     content:")";
 }
 
+.questions-header {
+    margin-bottom: 50px;
+}
+
+.questions-header .hot {
+    display: inline-block;
+    font-size: 60%;
+    text-decoration: underline;
+    margin-left: 50px;
+}
+
+.questions-footer {
+    margin-bottom: 30px;
+}
+
+.questions-footer .page-ref {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    margin-right: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: black;
+}
+
+.questions-footer .page-ref:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
