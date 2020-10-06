@@ -145,7 +145,7 @@ body {
 .question-card {
     position: relative;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    height: 150px;
+    height: auto;
     margin-top: 20px;
     margin-bottom: 30px;
     text-align: center;
@@ -153,22 +153,21 @@ body {
 }
 
 .question-card .question-title {
-    height: 10%;
-    position: absolute;
+    height: auto;
+    position: relative;
 }
 
 .question-card .question-text {
     overflow: hidden;
-    position: absolute;
+    position: relative;
     height: 30%;
-    top: 50px;
     padding-right: 20px;
 }
 
 .question-card .question-footer {
-    position: absolute;
-    height: 20%;
-    bottom: 0
+    position: relative;
+    height: auto;
+    bottom: 0;
 }
 
 .question-card > div {
@@ -239,11 +238,12 @@ body {
 }
 
 .question-tag {
-    padding: 0 5px;
+    padding: 0 2%;
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10%;
     margin-right: 3px;
+    color: #007bff;
 }
 .question-tag:hover {
     background-color: rgba(0, 0, 0, 0.2);
@@ -251,11 +251,15 @@ body {
 }
 
 .question-answer {
-    float: left;
+    display: block;
+    position: relative;
+    width: fit-content;
 }
 
 .question-tags {
-    float: right;
+    display: block;
+    position: relative;
+    width: 200px;
 }
 
 .answer-count:before {
@@ -266,7 +270,7 @@ body {
 }
 
 .questions-header {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .questions-header .hot {
@@ -313,9 +317,13 @@ body {
     font-size: 110%;
 }
 
-.question-ask input[type="text"] {
+.question-ask input[type="text"], input[type="password"]{
     width: 100%;
     padding-left: 5px;
+}
+
+.question-ask .error {
+    color: #de0000;
 }
 
 .question-ask textarea{
@@ -410,4 +418,8 @@ body {
     border-radius: 5px;
     color: white;
     font-weight: bold;
+}
+
+#login-form input[type="text"], input[type="password"]{
+    width: 50%;
 }
