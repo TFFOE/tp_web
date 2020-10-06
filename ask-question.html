@@ -9,39 +9,30 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/style.css">
-
     <title>Add question @AskMe</title>
 </head>
 
 <body>
     <div id="body-mask"> </div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand">
         <a class="navbar-brand" href="#">AskMe</a>
 
-        <div class="collapse navbar-collapse" id="navbarsExample02">
+        <div class="collapse navbar-collapse">
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Search">
             </form>
             <button class="button-ask">Ask!</button>
         </div>
 
-        <div class="userblock logged-user">
+        <div id="userblock" class="userblock logged-user">
             <table class="for-logged-user">
                 <tr>
-                    <td rowspan=3>
-                        <img src="static/img/user-avatar.png" alt="user-avatar" />
-                    </td>
-                    <td colspan=2>
-                        <div class="user-name">Dr. Pepper</div>
-                    </td>
+                    <td rowspan=3><img src="static/img/user-avatar.png" alt="user-avatar" /></td>
+                    <td colspan=2><div class="user-name">Dr. Pepper</div></td>
                 </tr>
                 <tr>
-                    <td>
-                        <a href="" class="userblock-ref">Settings</a>
-                    </td>
-                    <td>
-                        <a href="" class="userblock-ref">Log out</a>
-                    </td>
+                    <td><a href="" class="userblock-ref">Settings</a></td>
+                    <td><a href="" class="userblock-ref">Log out</a></td>
                 </tr>
             </table>
 
@@ -66,34 +57,20 @@
                     <form class="question-ask" action="" method="POST">
                         <table cols=2>
                             <tr>
-                                <td>
-                                    <div class="label">Title</div>
-                                </td>
-                                <td>
-                                    <input type="text" name="title" autofocus required id="" placeholder="How to build a moon park?">
-                                </td>
+                                <td><div class="label">Title</div></td>
+                                <td><input type="text" name="title" autofocus required id="" placeholder="How to build a moon park?"></td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div class="label">Text</div>
-                                </td>
-                                <td>
-                                    <textarea type="text" name="text" required id="" rows="10" placeholder="Really, how? Have no idea about it"></textarea>
-                                </td>
+                                <td><div class="label">Text</div></td>
+                                <td><textarea type="text" name="text" required id="" rows="10" placeholder="Really, how? Have no idea about it"></textarea></td>
                             </tr>
                             <tr>
-                                <td>
-                                    <div class="label">Tags</div>
-                                </td>
-                                <td>
-                                    <input type="text" name="tags" required id="" placeholder="fluffy tuffy">
-                                </td>
+                                <td><div class="label">Tags</div></td>
+                                <td><input type="text" name="tags" required id="" placeholder="fluffy tuffy"></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>
-                                    <input type="submit" value="Ask!">
-                                </td>
+                                <td><input type="submit" value="Ask!"></td>
                             </tr>
                         </table>
                     </form>

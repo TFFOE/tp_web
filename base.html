@@ -15,39 +15,33 @@
 
 <body>
     <div id="body-mask"> </div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-expand">
         <a class="navbar-brand" href="#">AskMe</a>
 
-        <div class="collapse navbar-collapse" id="navbarsExample02">
+        <div class="collapse navbar-collapse">
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Search">
             </form>
             <button class="button-ask">Ask!</button>
         </div>
 
-        <div class="userblock logged-user">
+        <div id="userblock" class="userblock logged-user">
             <table class="for-logged-user">
                 <tr>
-                    <td rowspan=3>
-                        <img src="static/img/user-avatar.png" alt="user-avatar"/>
-                    </td>
+                    <td rowspan=3><img src="static/img/user-avatar.png" alt="user-avatar" /></td>
                     <td colspan=2>
                         <div class="user-name">Dr. Pepper</div>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <a href="" class="userblock-ref">Settings</a>
-                    </td>
-                    <td>
-                        <a href="" class="userblock-ref">Log out</a>
-                    </td>
+                    <td><a href="" class="userblock-ref">Settings</a></td>
+                    <td><a href="#" onclick="logout()" class="userblock-ref">Log out</a></td>
                 </tr>
             </table>
 
             <table class="for-unlogged-user">
                 <tr>
-                    <td><a href="" class="userblock-ref">Log in</a></td>
+                    <td><a href="#" onclick="login()" class="userblock-ref">Log in</a></td>
                     <td><a href="" class="userblock-ref">Register</a></td>
                 </tr>
             </table>
@@ -57,34 +51,34 @@
     <main role="main">
         <div class="container">
             <div class="row">
-            <div class="col-md-8">
-                <h1>Place content here</h1>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="right-block popular-tags">
-                    <h1>Popular tags</h1>  
-                    <a href="" class="pop-tag-1">perl</a>
-                    <a href="" class="pop-tag-4">Python</a>
-                    <a href="" class="pop-tag-1">Technopark</a>
-                    <a href="" class="pop-tag-4">sunlight</a>
-                    <a href="" class="pop-tag-3">oh_my_zsh</a>
-                    <a href="" class="pop-tag-1">Hello world!</a>
-                    <a href="" class="pop-tag-1">Black shower</a>
-                    <a href="" class="pop-tag-2">Firefox</a>
+                <div class="col-md-8">
+                    <h1>Place content here</h1>
                 </div>
-                <div class="right-block best-members">
-                    <h1>Best members</h1>
-                    <ul>
-                        <li><a href="">Jack Sparrow</a></li>
-                        <li><a href="">Colin Peckers</a></li>
-                        <li><a href="">Julie Balabone</a></li>
-                        <li><a href="">Mark Down</a></li>
-                        <li><a href="">Sweden Orange</a></li>
-                        <li><a href="">Malacata Chichiburi</a></li>
-                    </ul>
+                <div class="col-6 col-md-4">
+                    <div class="right-block popular-tags">
+                        <h1>Popular tags</h1>
+                        <a href="" class="pop-tag-1">perl</a>
+                        <a href="" class="pop-tag-4">Python</a>
+                        <a href="" class="pop-tag-1">Technopark</a>
+                        <a href="" class="pop-tag-4">sunlight</a>
+                        <a href="" class="pop-tag-3">oh_my_zsh</a>
+                        <a href="" class="pop-tag-1">Hello world!</a>
+                        <a href="" class="pop-tag-1">Black shower</a>
+                        <a href="" class="pop-tag-2">Firefox</a>
+                    </div>
+                    <div class="right-block best-members">
+                        <h1>Best members</h1>
+                        <ul>
+                            <li><a href="">Jack Sparrow</a></li>
+                            <li><a href="">Colin Peckers</a></li>
+                            <li><a href="">Julie Balabone</a></li>
+                            <li><a href="">Mark Down</a></li>
+                            <li><a href="">Sweden Orange</a></li>
+                            <li><a href="">Malacata Chichiburi</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            </div>  
         </div>
     </main>
     <!-- Optional JavaScript -->
