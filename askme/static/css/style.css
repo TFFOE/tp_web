@@ -1,0 +1,444 @@
+
+#body-mask {
+    position: fixed;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(125, 255, 0, 0.5)
+}
+
+ul.navbar-nav {
+    margin-right: 50px;
+}
+
+nav {
+    height: 80px;
+    background-color: #fff;
+    z-index: 999;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    color: #00b200;
+    font-size: 200%;
+}
+
+button.button-ask {
+    display: inline-block;
+    height: calc(1.5em + .75rem + 2px);
+    width: 70px;
+    background-color: limegreen;
+    color:white;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.userblock > .for-unlogged-user { display: inline; }
+.userblock > .for-logged-user { display: none; }
+
+.userblock.logged-user > .for-unlogged-user { display: none; }
+.userblock.logged-user > .for-logged-user { display: inline; }
+
+.userblock {
+    position: relative;
+    right: 10px;
+}
+
+.userblock > table {
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.userblock > table td {
+    padding: 0px 5px;
+}
+
+.userblock > table img {
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 50px;
+}
+
+.userblock  .user-name {
+    color: #008585;
+}
+
+.userblock a {
+    font-size: 90%;
+    color: lightgray;
+}
+
+.userblock a:visited {
+    color: gray;
+}
+
+.pop-tag-1 {
+    color: #008585;
+}
+
+.pop-tag-2 {
+    font-size: 130%;
+    color: #007400;
+}
+
+.pop-tag-3 {
+    font-size: 160%;
+    color: #de6500;
+}
+
+.pop-tag-4 {
+    font-size: 190%;
+    color: #de0000;
+}
+
+.popular-tags > a {
+    display: inline-block;
+    margin-right: 10px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.popular-tags > a:hover {
+    text-decoration: none;
+    color: #00b200;
+    transition: 0.1s;
+}
+
+.right-block {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+body {
+    background-image: url(../img/background.jpg);
+}
+
+.container {
+    background-color: white;
+    opacity: 0.95;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+}
+
+.best-members > ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.best-members > ul > li{
+    margin: 10px 0;
+}
+
+.best-members > ul > li a {
+    color: #008585;
+    transition: 0.3s;
+}
+
+.best-members > ul > li a:hover {
+    text-decoration: none;
+    color: #00b200;
+    transition: 0.1s;
+}
+
+.question-card {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.question-card .question-title {
+    height: auto;
+    position: relative;
+}
+
+.question-card .question-text {
+    overflow: hidden;
+    position: relative;
+    min-height: 80px;
+    max-height: 145px;
+    padding-right: 20px;
+}
+
+.question-card .question-footer {
+    position: relative;
+    height: auto;
+    bottom: 0;
+}
+
+.question-card > div {
+    padding: 10px 0;
+    text-align: initial;
+}
+
+.question-card .avatar-box {
+    height: 60px;
+    text-align: center;
+}
+
+.question-card .avatar-box img {
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.question-card .like-counter {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.question-card .like-counter .info {
+    margin-bottom: 5px;
+}
+
+.question-card .like-counter .info > span {
+    display: inline-block;
+    background-color:rgba(0, 0, 0, 0.1);
+    width: auto;
+    padding: 4px 7px;
+    border-radius: 50%;
+}
+
+.question-card .like-button {
+    display: inline-block;
+    background-image: url(../img/like-dec.png);
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    transform: scale(1, -1);
+}
+
+.question-card .dislike-button {
+    display: inline-block;
+    background-image: url(../img/like-dec.png);
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+}
+
+.question-card .col1 {
+    position: relative;
+    width: 70px;
+    display: inline-block;
+}
+
+.question-card .col2 {
+    vertical-align: top;
+    width: calc(100% - 80px);
+    display: inline-block;
+    padding: 10px;
+}
+
+.question-footer {
+    position: relative;
+    width: calc(100% - 70px - 30px);
+}
+
+.question-tag {
+    padding: 0 2%;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10%;
+    margin-right: 3px;
+    color: #007bff;
+}
+.question-tag:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.question-answer {
+    display: block;
+    position: relative;
+    width: fit-content;
+}
+
+.question-tags {
+    display: block;
+    position: relative;
+    width: 200px;
+}
+
+.answer-count:before {
+    content:"(";
+}
+.answer-count:after {
+    content:")";
+}
+
+.questions-header {
+    margin-bottom: 30px;
+}
+
+.questions-header .hot {
+    display: inline-block;
+    font-size: 60%;
+    text-decoration: underline;
+    margin-left: 50px;
+}
+
+.questions-footer {
+    margin-bottom: 30px;
+}
+
+.questions-footer .page-ref {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    margin-right: 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: black;
+}
+
+.questions-footer .page-ref.inactive {
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    margin-right: 0;
+    margin-left: -5px;
+}
+
+.questions-footer .page-ref.current {
+    background-color: rgba(125, 255, 0, 0.5);
+}
+
+.questions-footer .page-ref.inactive:hover {
+    background-color: white;
+    cursor: default;
+}
+
+.questions-footer .page-ref:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.question-ask table {
+    width: 90%;
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+}
+
+.question-ask table tbody {
+    vertical-align: top;
+}
+
+.question-ask table td {
+    margin: 10px;
+}
+
+.question-ask .label {
+    width: 100%;
+    font-size: 110%;
+}
+
+.question-ask input[type="text"], input[type="password"]{
+    width: 100%;
+    padding-left: 5px;
+}
+
+.question-ask .error {
+    color: #de0000;
+}
+
+.question-ask textarea{
+    width: 100%;
+    padding-left: 5px;
+}
+
+.question-ask input[type="submit"] {
+    background-color: limegreen;
+    color:white;
+    border-radius: 5px;
+}
+
+.one-question-header {
+    position: relative;
+    height: 150px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.header-card {
+    background: none;
+    border: none;
+    height: auto;
+}
+
+.header-card .col1 {
+    width: 100px;
+}
+
+.header-card .col2 {
+    width: calc(100% - 100px - 10px);
+}
+
+.header-card .avatar-box {
+    height: auto;
+}
+
+.header-card .avatar-box img {
+    width: 100%;
+    height: auto;
+}
+
+.header-card .question-title {
+    position: relative;
+}
+
+.header-card .question-text {
+    position: relative;
+    height: auto;
+    top: auto;
+    margin-bottom: 20px;
+}
+
+
+.header-card .question-footer {
+    position: relative;
+    height: 50px;
+    top: auto;
+}
+
+.header-card .question-tags {
+    float: none;
+}
+
+.answer {
+    height: auto;
+}
+
+.answer .question-text {
+    position: relative;
+    top: 0;
+    margin-bottom: 30px;
+    height: auto;
+}
+
+.answer .question-title {
+    position: relative;
+}
+
+.answer .question-footer {
+    position: relative;
+}
+
+.my-answer textarea {
+    width: 100%;
+}
+
+.my-answer input[type="submit"] {
+    background-color: lime;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+#login-form input[type="text"], input[type="password"]{
+    width: 50%;
+}

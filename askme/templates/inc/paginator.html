@@ -1,0 +1,13 @@
+<div class="paginator">
+    {% if pages.has_previous %}
+        <a href="?page=1" class="page-ref">1</a>
+        <a href="?page={{pages.previous_page_number}}" class="page-ref"><</a>
+    {% endif %}
+    
+    <a href="?page={{pages.number}}" class="page-ref current">{{ pages.number }}</a>
+    
+    {% if pages.has_next %}
+        <a href="?page={{pages.next_page_number}}" class="page-ref">></a>
+        <a href="?page={{pages.paginator.num_pages}}" class="page-ref">{{ pages.paginator.num_pages }}</a>
+    {% endif %}
+</div>

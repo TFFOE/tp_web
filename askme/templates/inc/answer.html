@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="question-card answer">
+    <div class="col1">
+        <div class="avatar-box">
+            <img src={% static "/img/user-avatar.png" /%}>
+        </div>
+        <div class="like-counter">
+            <div class="info">
+                <span>
+                    {{answer.likes_counter}}
+                </span>
+            </div>
+            <a href="" class="like-button"></a>
+            <a href="" class="dislike-button"></a>
+        </div>
+    </div>
+    <div class="col2">
+        <div class="question-text">
+            {{answer.text}}
+        </div>
+        <div class="question-footer">
+            <input type="checkbox" value="correct"> Correct!
+        </div>
+    </div>
+</div>

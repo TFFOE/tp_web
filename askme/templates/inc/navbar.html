@@ -1,0 +1,34 @@
+{% load static %}
+
+<nav class="navbar navbar-expand">
+        <a class="navbar-brand" href={%url 'index'%}>AskMe</a>
+
+        <div class="collapse navbar-collapse">
+            <form class="form-inline my-2 my-md-0">
+                <input class="form-control" type="text" placeholder="Search">
+            </form>
+            <a href={%url 'ask'%}>
+                <button class="button-ask">Ask!</button>
+            </a>
+        </div>
+
+        <div class="userblock logged-user">
+            <table class="for-logged-user">
+                <tr>
+                    <td rowspan=3><img src={% static "/img/user-avatar.png" alt="user-avatar" %}/></td>
+                    <td colspan=2><div class="user-name">Dr. Pepper</div></td>
+                </tr>
+                <tr>
+                    <td><a href={%url 'settings'%} class="userblock-ref">Settings</a></td>
+                    <td><a href="#" class="userblock-ref">Log out</a></td>
+                </tr>
+            </table>
+
+            <table class="for-unlogged-user">
+                <tr>
+                    <td><a href={%url 'login'%} class="userblock-ref">Log in</a></td>
+                    <td><a href={%url 'signup'%} class="userblock-ref">Register</a></td>
+                </tr>
+            </table>
+        </div>
+    </nav>

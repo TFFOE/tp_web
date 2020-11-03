@@ -1,0 +1,37 @@
+{% extends 'inc/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Ask
+{% endblock title %}
+
+{% block content %}
+
+<div class="questions-header">
+    <h1>
+        New Question
+    </h1>
+</div>
+<form class="question-ask" action="" method="POST">
+    <table cols=2>
+        <tr>
+            <td><div class="label">Title</div></td>
+            <td><input type="text" name="title" autofocus required id="" placeholder="How to build a moon park?"></td>
+        </tr>
+        <tr>
+            <td><div class="label">Text</div></td>
+            <td><textarea type="text" name="text" required id="" rows="10" placeholder="Really, how? Have no idea about it"></textarea></td>
+        </tr>
+        <tr>
+            <td><div class="label">Tags</div></td>
+            <td><input type="text" name="tags" required id="" placeholder="fluffy tuffy"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Ask!"></td>
+        </tr>
+    </table>
+</form>
+
+{% endblock content %}

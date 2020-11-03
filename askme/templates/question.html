@@ -1,0 +1,55 @@
+{% extends 'inc/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Answers
+{% endblock title %}
+
+{% block content %}
+
+<div class="header-card question-card">
+    <div class="col1">
+        <div class="avatar-box">
+            <img src={%static "img/user-avatar.png"%} />
+        </div>
+        <div class="like-counter">
+            <div class="info">
+                <span>
+                    {{question.likes_counter}}
+                </span>
+            </div>
+            <a href="" class="like-button"></a>
+            <a href="" class="dislike-button"></a>
+        </div>
+    </div>
+    <div class="col2">
+        <div class="question-title">
+            <h3>
+                {{question.title}}
+            </h3>
+        </div>
+        <div class="question-text">
+            {{question.text}}
+        </div>
+        <div class="question-footer">
+            <div class="question-tags">
+                Tags:
+                {% for tag in question.tags %}
+                    <a href={% url 'tag' tag.name %} class="question-tag">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+{% for answer in answers %}
+    {% include "inc/answer.html"%}
+{% endfor %}
+
+<div class="questions-footer">
+    {% include 'inc/paginator.html' with pages=answers%}
+</div>
+
+{% endblock content %}

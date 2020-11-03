@@ -1,0 +1,41 @@
+{% extends 'inc/base.html' %}
+{% load static %}
+
+{% block title %}
+Sign In
+{% endblock title %}
+
+{% block content %}
+<div class="questions-header">
+    <h1>
+        Log In
+    </h1>
+</div>
+<form class="question-ask" id="login-form" action="" method="POST">
+    <table cols=2>
+        <tr>
+            <td colspan="2">
+                <span class="error not-hidden">Sorry, wrong password!</span>
+            </td>
+        </tr>
+        <tr>
+            <td><div class="label">Login</div></td>
+            <td><input type="text" name="login" maxlength="15" autofocus required id="" placeholder="%username%"></td>
+        </tr>
+        <tr>
+            <td><div class="label">Password</div></td>
+            <td><input type="password" name="password" maxlength="15" required id="" placeholder="%password%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Log in!"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <a href="">create new account</a>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock content %}

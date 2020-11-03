@@ -1,0 +1,60 @@
+{% extends 'inc/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% block content %}
+
+<div class="questions-header">
+    <h1>
+        Sign up
+    </h1>
+</div>
+<form class="question-ask" id="login-form" action="" method="POST">
+    <table cols=2>
+        <tr>
+            <td colspan="2">
+                <span class="error not-hidden">Sorry, this email address already registered!</span>
+            </td>
+        </tr>
+        <tr>
+            <td><div class="label">Login</div></td>
+            <td><input type="text" name="login" maxlength="15" autofocus required id="" placeholder="%username%"></td>
+        </tr>
+        <tr>
+            <td><div class="label">Email</div></td>
+            <td><input type="text" name="email" autofocus required id="" placeholder="%usermail%"></td>
+        </tr>
+        <tr>
+            <td><div class="label">NickName</div></td>
+            <td><input type="text" name="nickname" maxlength="15" autofocus required id="" placeholder="%usernick%"></td>
+        </tr>
+        <tr>
+            <td><div class="label">Password</div></td>
+            <td><input type="password" name="password" maxlength="15" required id="" placeholder="%password%"></td>
+        </tr>
+        <tr>
+            <td><div class="label">Repeat password</div></td>
+            <td><input type="password" name="r-password" maxlength="15" required id="" placeholder="%password%"></td>
+        </tr>
+        <tr>
+            <td><div class="label">Upload avatar</div></td>
+            <td><input type="file" name="useravatar" required id="" placeholder="%password%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Sign up!"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <a href="">log in existing account</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock content %}
