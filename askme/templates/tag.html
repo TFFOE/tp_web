@@ -15,12 +15,12 @@ Questions #{{tag}}
     </h1>
 </div>
 
-{% for question in questions %}
+{% for question in tagged_questions %}
     {% include 'inc/question_card.html'%}
 {% endfor %}
 
 <div class="questions-footer">
-    {% include 'inc/paginator.html' with pages=questions%}
+    {% include 'inc/paginator.html' with pages=tagged_questions%}
 </div>
 
 {% endblock content %}

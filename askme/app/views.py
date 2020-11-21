@@ -1,48 +1,17 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from random import randint
+from .models import *
+from operator import attrgetter
 import logging
 
 logger = logging.getLogger(__name__)
-q_num = 54
-t_num = q_num // 7
-a_num = q_num * 4
-
-tags = [
-    {
-        'id': i,
-        'name' : f"tag{i}",
-        'priority' : randint(1, 4),
-    } for i in range(t_num)
-]
-
-answers = [
-    {
-        'id': i,
-        'q_id': randint(0, q_num - 1),
-        'text': f"Answer №{i}. "*20,
-        'likes_counter': randint(0, 10),
-    } for i in range(a_num)
-]
-
-questions = [
-    {
-        'id': idx,
-        'title': f'Title №{idx + 1}',
-        'text': f'My question text {idx + 1}. ' * 100,
-        'likes_counter': randint(50, 200),
-        'answers_counter': len([ans for ans in answers if idx == ans['q_id']]),
-        'tags': [
-            tags[randint(0, t_num//2)],
-            tags[randint(t_num//2 + 1, t_num - 1)]
-        ]
-    } for idx in range(q_num)
-]
-
 
 def index(request):
     page = request.GET.get('page')
+
+    questions = Question.objects.all()
     paginator = Paginator(questions, 3)
 
     try:
@@ -51,13 +20,19 @@ def index(request):
         question_page = paginator.page(1)
     except EmptyPage:
         question_page = paginator.page(paginator.num_pages)
-
     return render(request, 'index.html', {
         'questions': question_page,
+        'answers_count': Question.objects.all()
+
     })
 
 def question(request, id):
-    curr_answers = [ans for ans in answers if id == ans['q_id']]
+    curr_question = Question.objects.get(pk = id)
+    curr_answers = sorted(
+        Answer.objects.get_answers_by_question_pk(id), 
+        key=lambda elem: elem.likes_count(), 
+        reverse=True
+        )
     page = request.GET.get('page')
     paginator = Paginator(curr_answers, 3)
 
@@ -69,17 +44,13 @@ def question(request, id):
         answers_page = paginator.page(paginator.num_pages)
 
     return render(request, 'question.html', {
-        'question': questions[id],
+        'question': curr_question,
         'answers': answers_page,
-        'id': id,
     })
 
 def tag(request, tag):
-    tagged = [question 
-        for question in questions
-        for q_tag in question['tags']
-        if tag == q_tag['name']]
-
+    tagged = Question.objects.filter(tags__name = tag)
+    
     paginator = Paginator(tagged, 3)
     page = request.GET.get('page')
 
@@ -91,13 +62,26 @@ def tag(request, tag):
         tags_page = paginator.page(paginator.num_pages)
 
     return render(request, 'tag.html', {
-        'questions': tags_page,
+        'tagged_questions': tags_page,
         'tag': tag,
     })
 
 def hot(request):
+    hot_questions = Question.objects.hot()
+
+    paginator = Paginator(hot_questions, 3)
+    page = request.GET.get('page')
+
+    try:
+        hot_page = paginator.page(page)
+    except PageNotAnInteger:
+        hot_page = paginator.page(1)
+    except EmptyPage:
+        hot_page = paginator.page(paginator.num_pages)
+
+
     return render(request, 'hot.html', {
-        'questions': questions[:3:2]
+        'hot_questions': hot_page,
     })
 
 def ask(request):
@@ -111,8 +95,3 @@ def settings(request):
 
 def signup(request):
     return render(request, 'signup.html', {})
-
-def right(request):
-    return render(request, 'right.html', {
-        'tags': tags,
-    })

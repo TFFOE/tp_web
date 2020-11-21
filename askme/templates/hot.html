@@ -15,18 +15,12 @@ Hot Questions
     </h1>
 </div>
 
-{% for question in questions %}
+{% for question in hot_questions %}
     {% include 'inc/question_card.html'%}
 {% endfor %}
 
 <div class="questions-footer">
-    <div class="paginator">
-        <a href="" class="page-ref">1</a>
-        <a href="" class="page-ref">2</a>
-        <a href="" class="page-ref">3</a>
-        <a href="" class="page-ref">...</a>
-        <a href="" class="page-ref">17</a>
-    </div>
+    {% include 'inc/paginator.html' with pages=hot_questions%}
 </div>
 
 {% endblock content %}

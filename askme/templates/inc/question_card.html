@@ -8,7 +8,7 @@
         <div class="like-counter">
             <div class="info">
                 <span>
-                    {{ question.likes_counter }}
+                    {{ question.likes_count }}
                 </span>
             </div>
             <a href="" class="like-button"></a>
@@ -16,10 +16,28 @@
         </div>
     </div>
     <div class="col2">
-        <div class="question-title">
+        <div class="question-title" >
             <h3>
-                {{ question.title }}
+                <a href={% url 'question' question.id%}>
+                    {{ question.title }}
+                </a>
             </h3>
+            <h6>
+                <table style="width: 100%">
+                    <tr>
+                        <td style="text-align: left; width: 50%;">
+                            <div class="question-date" style="display: inline-block;">
+                                {{ question.publication_date }}
+                        </div>
+                        </td>
+                        <td style="text-align: right; width: 50%;">
+                            <div class="question-author" style="display: inline-block;">
+                                Published by: {{ question.author }}
+                        </div>
+                        </td>
+                    </tr>
+                </table>
+            </h6>
         </div>
         <div class="question-text">
             {{ question.text }}
@@ -29,14 +47,14 @@
                 <a href={% url 'question' question.id%}>
                     Answer
                     <span class="answer-count">
-                        {{ question.answers_counter }}
+                        {{ question.answers_count }}
                     </span>
                 </a>
                 
             </div>
             <div class="question-tags">
                 Tags:
-                {% for tag in question.tags %}
+                {% for tag in question.tags.all %}
                     <a href={% url 'tag' tag.name %} class="question-tag">
                         {{ tag.name }}
                     </a>

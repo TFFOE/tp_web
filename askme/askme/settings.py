@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taggit',
+    'app.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +63,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'app.context_processors.top_tags',
+                'app.context_processors.questions',
+                'app.context_processors.tags',
+                'app.context_processors.profiles',
+                'app.context_processors.top_users',
+                # 'app.context_processors.top_tags',
             ],
         },
     },
