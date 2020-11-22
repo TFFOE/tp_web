@@ -1,3 +1,7 @@
 env/
 *.pyc
-__pycache__
+__pycache__/
+askme/app/__pycache__/
+askme/askme/__pycache__/
+db.sqlite3
+db copy.sqlite3

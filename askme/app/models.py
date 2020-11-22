@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import operator
+from django.conf import settings
 
 
 class LikeManager(models.Manager):
@@ -43,6 +44,29 @@ class ProfileManager(models.Manager):
     def getByUsername(self, username):
         return self.all().filter()
 
+    def get_rating(self):
+        user_questions = Question.objects.filter(author_id = self.pk)
+        sum_rating = 0
+        for q in user_questions:
+            sum_like = 0
+            for like in QuestionLike.objects.filter(linked_with_id = q.pk):
+                if (like.value == True):
+                    sum_like += 1
+                else:
+                    sum_like -= 1
+            sum_rating += sum_like
+
+        user_answers = Answer.objects.filter(user_id = self.pk)
+        for a in user_answers:
+            sum_like = 0
+            for like in AnswerLike.objects.filter(linked_with_id = a.pk):
+                if (like.value == True):
+                    sum_like += 1
+                else:
+                    sum_like -= 1
+            sum_rating += sum_like
+        return sum_rating
+
 
 class AnswerManager(models.Manager):
     def get_all(self):
@@ -57,6 +81,8 @@ class AnswerManager(models.Manager):
     def get_likes(self):
         return AnswerLike.objects.get_rating(self)
 
+    def user_image(self):
+        return Profile.objects.get(user_id = self.author.pk).avatar.url
     # def press_like(self, user):
     #     return LikeManager.press_like(user, self)
 
@@ -82,11 +108,14 @@ class QuestionManager(models.Manager):
 
     def hot(self):
         unordered = self.all()
-        ordered = sorted(unordered, key=lambda elem: elem.likes_count(), reverse=True)[:2]
+        ordered = sorted(unordered, key=lambda elem: elem.likes_count(), reverse=True)[:10]
         return ordered
 
     def get_username(self):
         return self.user.username
+
+    def user_image(self):
+        return Profile.objects.get(user_id = self.author.pk).avatar.url
 
 
 class Tag(models.Model):
@@ -125,6 +154,8 @@ class Answer(models.Model):
     )
     objects = AnswerManager()
     likes_count = AnswerManager.get_likes
+    user_image = AnswerManager.user_image
+
 
     def __str__(self):
         return self.text[0:20]
@@ -160,6 +191,7 @@ class Question(models.Model):
     with_special_tag = QuestionManager.with_special_tag
     likes_count = QuestionManager.get_likes
     hot = QuestionManager.hot
+    user_image = QuestionManager.user_image
 
     def __str__(self):
         return self.title
@@ -167,7 +199,7 @@ class Question(models.Model):
 
 class Profile(models.Model):
     avatar = models.ImageField(
-        verbose_name="Изображение профиля"
+        verbose_name="Изображение профиля",
     )
     user = models.OneToOneField(
         User,
@@ -175,9 +207,10 @@ class Profile(models.Model):
         verbose_name="Связанный пользователь"
     )
     objects = ProfileManager()
+    get_rating = ProfileManager.get_rating
 
     def __str__(self):
-        return self.objects.user.username
+        return self.user.username
 
 
 class AnswerLike(models.Model):
