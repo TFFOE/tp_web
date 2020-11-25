@@ -5,47 +5,17 @@ from django.conf import settings
 
 
 class LikeManager(models.Manager):
-    def get_likes(self, instance):
-        return self.filter(value=True, linked_with__pk=instance.pk)
-
-    def get_dislikes(self, instance):
-        return self.filter(value=False, linked_with__pk=instance.pk)
-
-    def get_rating(self, instance):
-        return self.get_likes(instance).count() - self.get_dislikes(instance).count()
-
-    def check_if_liked(self, instance):
-        return self.get_likes(instance).count() > 0
-
-    def check_if_disliked(self, instance):
-        return self.get_dislikes(instance).count() > 0
-
-    # def press_like(self, user, instance):
-    #     defaults = {
-    #         'linked_with': self,
-    #         'user': user,
-    #     }
-    #     instance.objects.update_or_create(
-    #         defaults, defaults
-    #     )
-
+    # def get_rating(self, instance):
+    #     return self.- self.get_dislikes(instance).count()
+    pass
 
 class TagManager(models.Manager):
-    def popular_tags(self):
-        return self.all()[:10]
-
-    # должен возвращать теги вопроса
-    def question_tags(self, question_pk):
-        self.filter(question__id=question_pk)
-        pass
+    pass
 
 
 class ProfileManager(models.Manager):
-    def getByUsername(self, username):
-        return self.all().filter()
-
     def get_rating(self):
-        user_questions = Question.objects.filter(author_id = self.pk)
+        user_questions = self.question_set.all()
         sum_rating = 0
         for q in user_questions:
             sum_like = 0
@@ -56,7 +26,7 @@ class ProfileManager(models.Manager):
                     sum_like -= 1
             sum_rating += sum_like
 
-        user_answers = Answer.objects.filter(user_id = self.pk)
+        user_answers = self.answer_set.all()
         for a in user_answers:
             sum_like = 0
             for like in AnswerLike.objects.filter(linked_with_id = a.pk):
@@ -69,53 +39,27 @@ class ProfileManager(models.Manager):
 
 
 class AnswerManager(models.Manager):
-    def get_all(self):
-        return self.all()
-
-    def get_answers_by_question_pk(self, pk):
-        return self.filter(question__pk=pk)
-
-    def question_answers_count(self, pk):
-        return self.get_answers_by_question_pk(pk).count()
-
-    def get_likes(self):
-        return AnswerLike.objects.get_rating(self)
-
-    def user_image(self):
-        return Profile.objects.get(user_id = self.author.pk).avatar.url
-    # def press_like(self, user):
-    #     return LikeManager.press_like(user, self)
+    def get_rating(self):
+        votes = self.answerlike_set
+        likes = votes.filter(value=True).count()
+        dislikes = votes.filter(value=False).count()
+        return likes - dislikes
 
 
 class QuestionManager(models.Manager):
-    def popular_questions(self):
-        return self.all()[:10]
-
-    def answers_count(self):
-        return Answer.objects.question_answers_count(self.pk)
-
-    def answers(self):
-        return Answer.objects.get_answers_by_question_pk(self.pk)
-
-    def with_special_tag(self, tag):
-        import logging
-        logger = logging.getLogger(__name__)
-        logger.error(tag)
-        return self.filter(tag__contains=tag)
-
-    def get_likes(self):
-        return QuestionLike.objects.get_rating(self)
+    def get_rating(self):
+        votes = self.questionlike_set
+        likes = votes.filter(value=True).count()
+        dislikes = votes.filter(value=False).count()
+        return likes - dislikes
 
     def hot(self):
-        unordered = self.all()
-        ordered = sorted(unordered, key=lambda elem: elem.likes_count(), reverse=True)[:10]
+        ordered = sorted(
+            self.all(), 
+            key=lambda elem: elem.rating(), 
+            reverse=True
+            )[:10]
         return ordered
-
-    def get_username(self):
-        return self.user.username
-
-    def user_image(self):
-        return Profile.objects.get(user_id = self.author.pk).avatar.url
 
 
 class Tag(models.Model):
@@ -142,7 +86,7 @@ class Answer(models.Model):
         auto_now_add=True,
         verbose_name="Дата публикации"
     )
-    user = models.ForeignKey(
+    author = models.ForeignKey(
         User,
         null=True,
         on_delete=models.SET_NULL,
@@ -152,10 +96,10 @@ class Answer(models.Model):
         default=False,
         verbose_name="Ответ является правильным"
     )
-    objects = AnswerManager()
-    likes_count = AnswerManager.get_likes
-    user_image = AnswerManager.user_image
 
+    rating = AnswerManager.get_rating
+
+    objects = AnswerManager()
 
     def __str__(self):
         return self.text[0:20]
@@ -185,13 +129,9 @@ class Question(models.Model):
         verbose_name="Теги"
     )
 
+    rating = QuestionManager.get_rating
+
     objects = QuestionManager()
-    answers = QuestionManager.answers
-    answers_count = QuestionManager.answers_count
-    with_special_tag = QuestionManager.with_special_tag
-    likes_count = QuestionManager.get_likes
-    hot = QuestionManager.hot
-    user_image = QuestionManager.user_image
 
     def __str__(self):
         return self.title

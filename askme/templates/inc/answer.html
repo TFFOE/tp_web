@@ -3,12 +3,12 @@
 <div class="question-card answer">
     <div class="col1">
         <div class="avatar-box">
-            <img src={{question.user_image}}>
+            <img src={{answer.author.profile.avatar.url}}>
         </div>
         <div class="like-counter">
             <div class="info">
                 <span>
-                    {{answer.likes_count}}
+                    {{answer.rating}}
                 </span>
             </div>
             <a href="" class="like-button"></a>
@@ -21,12 +21,12 @@
                 <tr>
                     <td style="text-align: left; width: 50%;">
                         <div class="question-date" style="display: inline-block;">
-                            {{ question.publication_date }}
+                            {{ answer.publication_date }}
                     </div>
                     </td>
                     <td style="text-align: right; width: 50%;">
                         <div class="question-author" style="display: inline-block;">
-                            Published by: {{ question.author }}
+                            Published by: {{ answer.author }}
                     </div>
                     </td>
                 </tr>

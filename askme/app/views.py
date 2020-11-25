@@ -1,10 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from random import randint
-from .models import *
-from operator import attrgetter
+from .models import Question, Answer, Profile, QuestionLike, AnswerLike, Tag
 import logging
+from django.contrib import auth
+from app.forms import LoginForm
 
 logger = logging.getLogger(__name__)
 
@@ -27,14 +27,14 @@ def index(request):
     })
 
 def question(request, id):
-    curr_question = Question.objects.get(pk = id)
-    curr_answers = sorted(
-        Answer.objects.get_answers_by_question_pk(id), 
-        key=lambda elem: elem.likes_count(), 
+    question = Question.objects.select_related('author').get(pk = id)
+    answers = sorted(
+        question.answer_set.all(), 
+        key=lambda ans: ans.rating(), 
         reverse=True
         )
     page = request.GET.get('page')
-    paginator = Paginator(curr_answers, 3)
+    paginator = Paginator(answers, 3)
 
     try:
         answers_page = paginator.page(page)
@@ -44,12 +44,12 @@ def question(request, id):
         answers_page = paginator.page(paginator.num_pages)
 
     return render(request, 'question.html', {
-        'question': curr_question,
+        'question': question,
         'answers': answers_page,
     })
 
 def tag(request, tag):
-    tagged = Question.objects.filter(tags__name = tag)
+    tagged = Tag.objects.get(name = tag).question_set.all()
     
     paginator = Paginator(tagged, 3)
     page = request.GET.get('page')
@@ -88,7 +88,27 @@ def ask(request):
     return render(request, 'ask.html', {})
 
 def login(request):
-    return render(request, 'login.html', {})
+    if request.method == 'GET':
+        form = LoginForm()
+        logger.error("REQUEST IS GET")
+    elif request.method == 'POST':
+        logger.error("REQUEST IS POST")
+        form = LoginForm()
+        
+        user = auth.authenticate(request, username = request.POST.get('login'), password = request.POST.get('password'))
+        if user is not None:
+            logger.error("IM HERE")
+            auth.login(request, user)
+            return redirect("/") # Настроить правильный редирект
+        else:
+            logger.error("IM NOT HERE")
+
+    ctx = {'form': form}
+    return render(request, 'login.html', ctx)
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/")
 
 def settings(request):
     return render(request, 'settings.html', {})

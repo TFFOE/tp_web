@@ -3,12 +3,12 @@
 <div class="question-card">
     <div class="col1">
         <div class="avatar-box">
-            <img src={{question.user_image}}/>
+            <img src={{question.author.profile.avatar.url}}/>
         </div>
         <div class="like-counter">
             <div class="info">
                 <span>
-                    {{ question.likes_count }}
+                    {{question.rating}}
                 </span>
             </div>
             <a href="" class="like-button"></a>
@@ -19,7 +19,7 @@
         <div class="question-title" >
             <h3>
                 <a href={% url 'question' question.id%}>
-                    {{ question.title }}
+                    {{question.title}}
                 </a>
             </h3>
             <h6>
@@ -27,12 +27,12 @@
                     <tr>
                         <td style="text-align: left; width: 50%;">
                             <div class="question-date" style="display: inline-block;">
-                                {{ question.publication_date }}
+                                {{question.publication_date}}
                         </div>
                         </td>
                         <td style="text-align: right; width: 50%;">
                             <div class="question-author" style="display: inline-block;">
-                                Published by: {{ question.author }}
+                                Published by: {{question.author.username}}
                         </div>
                         </td>
                     </tr>
@@ -40,26 +40,28 @@
             </h6>
         </div>
         <div class="question-text">
-            {{ question.text }}
+            {{question.text}}
         </div>
         <div class="question-footer">
             <div class="question-answer">
                 <a href={% url 'question' question.id%}>
                     Answer
                     <span class="answer-count">
-                        {{ question.answers_count }}
+                        {{question.answer_set.count}}
                     </span>
                 </a>
                 
             </div>
+            {% if question.tags.count %}
             <div class="question-tags">
                 Tags:
                 {% for tag in question.tags.all %}
                     <a href={% url 'tag' tag.name %} class="question-tag">
-                        {{ tag.name }}
+                        {{tag.name}}
                     </a>
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

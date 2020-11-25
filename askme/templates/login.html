@@ -11,7 +11,8 @@ Sign In
         Log In
     </h1>
 </div>
-<form class="question-ask" id="login-form" action="" method="POST">
+<form class="question-ask" id="login-form" method="POST" action="\login" >
+    {% csrf_token %}
     <table cols=2>
         <tr>
             <td colspan="2">
@@ -33,7 +34,7 @@ Sign In
         <tr>
             <td></td>
             <td>
-                <a href="">create new account</a>
+                <a href={%url 'signup'%}>create new account</a>
             </td>
         </tr>
     </table>

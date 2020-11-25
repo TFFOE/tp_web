@@ -23,5 +23,6 @@ def profiles(request):
 
 def top_users(request):
     users = User.objects.all()
-    top_users = sorted(users, reverse=True, key = lambda elem: Profile.objects.get(user_id = elem.pk).get_rating())[:10]
+    #top_users = sorted(users, reverse=True, key = lambda elem: Profile.objects.get(user_id = elem.pk).get_rating())[:10]
+    top_users = users[:10]
     return {'top_users': top_users}
